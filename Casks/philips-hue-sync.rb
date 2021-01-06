@@ -1,21 +1,9 @@
 cask "philips-hue-sync" do
-  version :latest
-  sha256 :no_check
+  version "1.5.3.3"
 
-  url "https://flex1548-esd.flexnetoperations.com/flexnet/operations/WebContent?fileID=HueSyncMac",
-      verified: "flex1548-esd.flexnetoperations.com/flexnet/operations/"
+  url "https://firmware.meethue.com/storage/huesyncmac/3/753de441-6193-4860-b529-c9866994c3cc/HueSyncInstaller_1.5.3.3.pkg"
   name "Philips Hue Sync"
-  homepage "https://www2.meethue.com/en-us/entertainment/hue-sync"
-
-  container type: :naked
-
-  pkg "philips-hue-sync.pkg"
-
-  # This is a horrible hack to force the file extension.
-  # The backend code should be fixed so that this is not needed.
-  preflight do
-    system_command "/bin/mv", args: ["--", staged_path.join("WebContent"), staged_path.join("philips-hue-sync.pkg")]
-  end
+  homepage "https://www.philips-hue.com/en-hk/entertainment/hue-sync"
 
   uninstall quit:    [
     "com.lighting.huesync",
